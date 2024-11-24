@@ -17,4 +17,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
-          FOLDER: base-concepts # The folder the action should deploy.
+          FOLDER: 1.base-concepts # The folder the action should deploy.
