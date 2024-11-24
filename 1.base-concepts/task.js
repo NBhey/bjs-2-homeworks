@@ -20,6 +20,6 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   percent = (percent * 0.01) / 12;
   const bodyCredit = amount - contribution;
   const pay =
-    bodyCredit * (percent + (percent / (((1 + percent) ** countMonths) - 1)));
-  return Number((pay * countMonths).toFixed(2))
+    bodyCredit * (percent + percent / ((1 + percent) ** countMonths - 1));
+  return Number((pay * countMonths).toFixed(2));
 }
