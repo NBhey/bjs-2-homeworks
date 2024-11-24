@@ -2,7 +2,7 @@ name: Deploy to GithubPages
 
 on: 
   branches:
-      - master
+    - master
 permissions:
   contents: write
 jobs:
