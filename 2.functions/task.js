@@ -1,8 +1,7 @@
 function getArrayParams(...arr) {
-  let sum = 0;
-  arr.map((el) => {
-    sum += el;
-  });
+  const sum = arr.reduce((acc, el) => {
+    return (acc += el);
+  }, 0);
   return {
     min: Math.min(...arr),
     max: Math.max(...arr),
@@ -11,9 +10,7 @@ function getArrayParams(...arr) {
 }
 
 function summElementsWorker(...arr) {
-  return arr.reduce((acc, el) => {
-    return acc + el;
-  }, 0);
+  return arr.reduce((acc, el) => acc + el, 0);
 }
 
 function differenceMaxMinWorker(...arr) {
@@ -48,9 +45,6 @@ function averageEvenElementsWorker(...arr) {
 }
 
 function makeWork(arrOfArr, func) {
-  let arr = [];
-  arrOfArr.map((el) => {
-    arr.push(func(...el));
-  });
-  return Math.max(...arr);
+  arrOfArr = arrOfArr.map((el) => func(...el));
+  return Math.max(...arrOfArr);
 }
