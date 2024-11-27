@@ -18,30 +18,33 @@ function differenceMaxMinWorker(...arr) {
 }
 
 function differenceEvenOddWorker(...arr) {
-  let odd = 0;
-  arr.map((el) => {
-    if (el % 2 === 0) odd = odd + el;
-  });
-
-  let even = 0;
-  arr.map((el) => {
-    if (el % 2 !== 0) even = even + el;
-  });
-
-  return arr.length === 0 ? 0 : odd - even;
+  let result = arr.reduce(
+    (acc, el) => {
+      if (el % 2 === 0) {
+        acc.odd += el;
+        return acc;
+      } else {
+        acc.even += el;
+        return acc;
+      }
+    },
+    { odd: 0, even: 0 }
+  );
+  return arr.length === 0 ? 0 : result.odd - result.even;
 }
 
 function averageEvenElementsWorker(...arr) {
-  let sum = 0;
-  let count = 0;
-  arr.map((el) => {
-    if (el % 2 === 0) {
-      sum = sum + el;
-      count += 1;
-    }
-  });
-
-  return arr.length === 0 ? 0 : sum / count;
+  arr = arr.reduce(
+    (acc, el) => {
+      if (el % 2 === 0) {
+        acc.sum = acc.sum + el;
+        acc.length += 1;
+      }
+      return acc;
+    },
+    { sum: 0, length: 0 }
+  );
+  return arr.length === 0 ? 0 : arr.sum / arr.length;
 }
 
 function makeWork(arrOfArr, func) {
